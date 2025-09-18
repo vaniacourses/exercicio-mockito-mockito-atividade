@@ -40,7 +40,6 @@ public class JogoTest {
 
     @Test
     public void testeDerrotaPrimeiroTurno() {
-        // Resultado 2, 3 ou 12 no primeiro lançamento → derrota imediata
         when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(2);
 
         boolean resultado = jogo.jogo();
@@ -50,11 +49,9 @@ public class JogoTest {
 
     @Test
     public void testePontoDepoisVitoria() {
-        // Primeiro lançamento cria o ponto (por exemplo 4)
-        // Segundo lançamento igual ao ponto → vitória
         when(mockedJogador.lancar(mockedDado1, mockedDado2))
-                .thenReturn(4)  // primeiro lançamento
-                .thenReturn(4); // segundo lançamento igual ao ponto
+                .thenReturn(4)
+                .thenReturn(4);
 
         boolean resultado = jogo.jogo();
 
@@ -63,11 +60,9 @@ public class JogoTest {
 
     @Test
     public void testePontoDepoisDerrota() {
-        // Primeiro lançamento cria o ponto (por exemplo 5)
-        // Segundo lançamento dá 7 → derrota
         when(mockedJogador.lancar(mockedDado1, mockedDado2))
-                .thenReturn(5)  // primeiro lançamento → ponto
-                .thenReturn(7); // segundo lançamento → derrota
+                .thenReturn(5)
+                .thenReturn(7);
 
         boolean resultado = jogo.jogo();
 
@@ -76,13 +71,11 @@ public class JogoTest {
 
     @Test
     public void testeVariosLancamentosAntesDoResultado() {
-        // Primeiro lançamento cria o ponto 6
-        // Lança 4, 5, 6 → vitória no último
         when(mockedJogador.lancar(mockedDado1, mockedDado2))
-                .thenReturn(6)  // primeiro lançamento → ponto
-                .thenReturn(4)  // segundo lançamento → continua
-                .thenReturn(5)  // terceiro lançamento → continua
-                .thenReturn(6); // quarto lançamento → acerta ponto → vitória
+                .thenReturn(6)
+                .thenReturn(4)
+                .thenReturn(5)
+                .thenReturn(6);
 
         boolean resultado = jogo.jogo();
 
@@ -91,13 +84,11 @@ public class JogoTest {
 
     @Test
     public void testeVariosLancamentosAntesDaDerrota() {
-        // Primeiro lançamento cria o ponto 8
-        // Lança 9, 5, 7 → derrota no último
         when(mockedJogador.lancar(mockedDado1, mockedDado2))
-                .thenReturn(8)  // primeiro lançamento → ponto
-                .thenReturn(9)  // segundo lançamento → continua
-                .thenReturn(5)  // terceiro lançamento → continua
-                .thenReturn(7); // quarto lançamento → derrota
+                .thenReturn(8)
+                .thenReturn(9)
+                .thenReturn(5)
+                .thenReturn(7);
 
         boolean resultado = jogo.jogo();
 
