@@ -30,8 +30,16 @@ public class JogoTest {
     }
 
     @Test
-    public void testeVitoriaPrimeiroTurno() {
+    public void testeVitoriaPrimeiroTurnoCom7() {
         when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(7);
+
+        boolean resultado = jogo.jogo();
+
+        Assertions.assertTrue(resultado);
+    }
+    @Test
+    public void testeVitoriaPrimeiroTurnoCom11() {
+        when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(11);
 
         boolean resultado = jogo.jogo();
 
@@ -39,8 +47,24 @@ public class JogoTest {
     }
 
     @Test
-    public void testeDerrotaPrimeiroTurno() {
+    public void testeDerrotaPrimeiroTurnoCom2() {
         when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(2);
+
+        boolean resultado = jogo.jogo();
+
+        assertFalse(resultado);
+    }
+    @Test
+    public void testeDerrotaPrimeiroTurnoCom3() {
+        when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(3);
+
+        boolean resultado = jogo.jogo();
+
+        assertFalse(resultado);
+    }
+    @Test
+    public void testeDerrotaPrimeiroTurnoCom12() {
+        when(mockedJogador.lancar(mockedDado1, mockedDado2)).thenReturn(12);
 
         boolean resultado = jogo.jogo();
 
